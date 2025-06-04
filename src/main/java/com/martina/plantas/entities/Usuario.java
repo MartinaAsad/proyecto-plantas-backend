@@ -1,18 +1,24 @@
 package com.martina.plantas.entities;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Collection;
 
 
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioidUsuario")
+    private Collection<Planta> plantaCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -70,6 +76,14 @@ public class Usuario implements Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public Collection<Planta> getPlantaCollection() {
+        return plantaCollection;
+    }
+
+    public void setPlantaCollection(Collection<Planta> plantaCollection) {
+        this.plantaCollection = plantaCollection;
     }
     
     
