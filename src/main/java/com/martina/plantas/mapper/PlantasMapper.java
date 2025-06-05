@@ -18,6 +18,7 @@ public interface PlantasMapper {
     @Mapping(source="usuarioidUsuario", target="dueno")
     PlantaDTO aDto(Planta p);
     
+    @Mapping(source="dueno", target="usuarioidUsuario")
     @Mapping(target="idPlanta", ignore=true)
     @Mapping(target="cantLecturas", ignore=true)
     @Mapping(target="alertasMedidas", ignore=true)

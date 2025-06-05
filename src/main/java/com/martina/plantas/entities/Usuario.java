@@ -85,6 +85,15 @@ public class Usuario implements Serializable {
     public void setPlantaCollection(Collection<Planta> plantaCollection) {
         this.plantaCollection = plantaCollection;
     }
+
+    public Usuario(String nombre, String apellido, String mail, String clave) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.clave = clave;
+    }
+    
+    
     
     
     
