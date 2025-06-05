@@ -34,7 +34,7 @@ public class Planta implements Serializable {
     @Basic(optional = false)
     @Column(name = "idPlanta")
     private Integer idPlanta;
-    @Size(max = 255)
+    @Size(max = 40)
     @Column(name = "nombrePlanta")
     private String nombrePlanta;
     @Column(name = "cantLecturas")
@@ -121,31 +121,6 @@ public class Planta implements Serializable {
 
     public void setPais(Paises pais) {
         this.pais = pais;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idPlanta != null ? idPlanta.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Planta)) {
-            return false;
-        }
-        Planta other = (Planta) object;
-        if ((this.idPlanta == null && other.idPlanta != null) || (this.idPlanta != null && !this.idPlanta.equals(other.idPlanta))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.martina.plantas.entities.Planta[ idPlanta=" + idPlanta + " ]";
     }
     
 }
