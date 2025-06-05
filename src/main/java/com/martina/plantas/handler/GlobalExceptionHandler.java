@@ -1,5 +1,6 @@
 package com.martina.plantas.handler;
 
+import com.martina.plantas.exception.PlantaExistingException;
 import com.martina.plantas.exception.UsuarioErrorException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String>handleUsuarioWithPadreException(UsuarioErrorException uf){
          return new ResponseEntity<>(uf.getMessage(), HttpStatus.BAD_REQUEST);
     }
+    
+    @ExceptionHandler(PlantaExistingException.class)
+    public ResponseEntity<String>handlePlantaExistingException(PlantaExistingException uf){
+         return new ResponseEntity<>(uf.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
+    
     
 }
