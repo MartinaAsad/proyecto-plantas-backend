@@ -3,8 +3,11 @@ package com.martina.plantas.mapper;
 
 import com.martina.plantas.dto.request.UsuarioDTO;
 import com.martina.plantas.entities.Usuario;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -22,5 +25,8 @@ public interface UsuarioMapper {
     //ignorar atributos para que no se mapeen
     @Mapping(target="idUsuario", ignore=true)
     Usuario aEntidad (UsuarioDTO dto);
+    
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateUsuarioFromDto(UsuarioDTO dto, @MappingTarget Usuario entidad);
     
 }

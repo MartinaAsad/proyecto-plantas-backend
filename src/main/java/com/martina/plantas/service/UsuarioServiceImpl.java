@@ -46,4 +46,18 @@ public class UsuarioServiceImpl implements UsuarioService{
         }
         return verificar;
     }
+    
+    @Override
+    public void actualizarUsuario(Integer id, UsuarioDTO uDto) {
+        Usuario u=usuarioRepository.findById(id).orElseThrow(()-> new UsuarioErrorException("No existe el usuario seleccionado"));
+        
+        //SOLO si se ingreso un mail diferente, hacer esta validacion
+        if(uDto.getMail()!=null && !uDto.getMail().equals(u.getMail())){
+            if(usuarioRepository.existsByMail(uDto.getMail())){
+                throw new UsuarioErrorException("El mail que desea modificar ya existe");
+            }
+        }
+        usuarioMapper.updateUsuarioFromDto(uDto, u);
+         usuarioRepository.save(u);
+    }
 }

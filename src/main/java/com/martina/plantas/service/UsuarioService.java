@@ -10,4 +10,5 @@ import com.martina.plantas.dto.request.UsuarioDTO;
 public interface UsuarioService {
     
     void crearUsuario(UsuarioDTO uDto);
+    void actualizarUsuario(Integer id,UsuarioDTO uDto);
 }

@@ -9,4 +9,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Integer>{
 
 	//PARA EL LOGIN
 	Optional<Usuario> findByMail(String mail);
+        
+        boolean existsByMail (String mail);
 }
