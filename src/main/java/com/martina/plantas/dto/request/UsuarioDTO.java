@@ -27,7 +27,10 @@ public class UsuarioDTO implements Serializable {
      @Email(message="formato de email invalido")
     private String mail;
      
-     @Length(min=8)
+     @Pattern(
+    regexp = "^(?=.*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/]).{8,}$",
+    message = "La contraseña debe tener al menos 8 caracteres y un carácter especial"
+)
     private String clave;
 
     public UsuarioDTO(String nombre, String apellido, String mail, String clave) {

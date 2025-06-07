@@ -6,11 +6,13 @@ import com.martina.plantas.exception.UsuarioErrorException;
 import com.martina.plantas.mapper.UsuarioMapper;
 import com.martina.plantas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Martina
  */
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
     
     @Autowired
