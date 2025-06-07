@@ -1,7 +1,6 @@
 
 package com.martina.plantas.dto.request;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import java.io.Serializable;
 import lombok.NoArgsConstructor;
@@ -15,12 +14,11 @@ import org.hibernate.validator.constraints.Length;
 public class UsuarioDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "campo invalido")//solo acepta letras
-    @NotBlank(message="campo nombre invalido")//notblank para string
+    @Pattern(regexp = "^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+( [a-zA-ZÁÉÍÓÚáéíóúñÑ]+)*$", message = "El nombre solo puede contener letras y espacios")
     @Length(min=3, max=20)
     private String nombre;
     
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "formato de apellido es invalido")
+    @Pattern(regexp = "^[a-zA-ZÁÉÍÓÚáéíóúñÑ]+( [a-zA-ZÁÉÍÓÚáéíóúñÑ]+)*$", message = "El apellido solo puede contener letras y espacios")
     @Length(min=4, max=30)
     private String apellido;
     
