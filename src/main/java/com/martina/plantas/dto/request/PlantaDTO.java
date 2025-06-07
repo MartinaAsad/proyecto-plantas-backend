@@ -1,8 +1,6 @@
 
 package com.martina.plantas.dto.request;
 
-import com.martina.plantas.entities.Paises;
-import com.martina.plantas.entities.Usuario;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
@@ -16,19 +14,18 @@ public class PlantaDTO {
      @Pattern(regexp = "^[a-zA-Z]+$", message = "solo se aceptan letras como nombre de la planta")//solo acepta letras
      @Length(min=3, max=40)
      private String nombrePlanta;
-    private Usuario dueno;
-    private Paises pais;
+    private Integer dueno;
+    private Integer idPais;
 
     public PlantaDTO(){
         
     }
-    public PlantaDTO(String nombrePlanta, Usuario dueno, Paises pais) {
+
+    public PlantaDTO(String nombrePlanta, Integer dueno, Integer idPais) {
         this.nombrePlanta = nombrePlanta;
         this.dueno = dueno;
-        this.pais = pais;
+        this.idPais = idPais;
     }
-    
-    
 
     public String getNombrePlanta() {
         return nombrePlanta;
@@ -38,21 +35,24 @@ public class PlantaDTO {
         this.nombrePlanta = nombrePlanta;
     }
 
-    public Usuario getDueno() {
+    public Integer getDueno() {
         return dueno;
     }
 
-    public void setDueno(Usuario dueno) {
+    public void setDueno(Integer dueno) {
         this.dueno = dueno;
     }
 
-    public Paises getPais() {
-        return pais;
+    public Integer getIdPais() {
+        return idPais;
     }
 
-    public void setPais(Paises pais) {
-        this.pais = pais;
+    public void setIdPais(Integer idPais) {
+        this.idPais = idPais;
     }
+
+    
+   
     
     
 }
