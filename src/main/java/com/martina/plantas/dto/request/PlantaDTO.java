@@ -2,6 +2,7 @@
 package com.martina.plantas.dto.request;
 
 import jakarta.validation.constraints.Pattern;
+import java.io.Serializable;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
  * @author Martina
  */
 
-public class PlantaDTO {
+public class PlantaDTO implements Serializable {
     
      @Pattern(regexp = "^[a-zA-Z]+$", message = "solo se aceptan letras como nombre de la planta")//solo acepta letras
      @Length(min=3, max=40)
