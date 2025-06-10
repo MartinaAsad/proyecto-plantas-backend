@@ -2,11 +2,15 @@
 package com.martina.plantas.mapper;
 
 import com.martina.plantas.dto.request.PlantaDTO;
+import com.martina.plantas.dto.request.PlantaEdicionDTO;
 import com.martina.plantas.entities.Paises;
 import com.martina.plantas.entities.Planta;
 import com.martina.plantas.entities.Usuario;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -45,5 +49,14 @@ public interface PlantasMapper {
         paises.setId(dueno);
         return paises;
     }
+        
+    @Mapping(target = "idPlanta", ignore = true)
+    @Mapping(target = "pais", ignore = true)
+    @Mapping(target = "nombrePlanta", ignore = true)
+    @Mapping(target = "usuarioidUsuario", ignore = true)
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updatePlantaFromDto(PlantaEdicionDTO dto, @MappingTarget Planta entidad);
+        
+       
 }
 
