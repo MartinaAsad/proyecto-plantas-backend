@@ -2,6 +2,7 @@
 package com.martina.plantas.service;
 
 import com.martina.plantas.dto.request.PlantaDTO;
+import com.martina.plantas.dto.request.PlantaEdicionDTO;
 import com.martina.plantas.entities.Planta;
 import com.martina.plantas.entities.Usuario;
 import com.martina.plantas.exception.PlantaExistingException;
@@ -76,5 +77,19 @@ public class PlantaServiceImpl implements PlantaService {
         }
         return verificar;
     }
+
+    @Override
+    public void editarPlanta(PlantaEdicionDTO planta, Integer plantaSeleccionada) {
+        Planta p=plantaRepository.findById(plantaSeleccionada).orElseThrow(
+                ()-> new PlantaExistingException("No existe la planta seleccionada"));
+        
+        plantasMapper.updatePlantaFromDto(planta, p);
+        plantaRepository.save(p);
+        
+        
+    }
+
+  
+    
     
 }

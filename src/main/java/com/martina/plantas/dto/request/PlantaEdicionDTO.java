@@ -1,6 +1,7 @@
 
 package com.martina.plantas.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import java.io.Serializable;
@@ -9,64 +10,66 @@ import java.io.Serializable;
  *
  * @author Martina
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlantaEdicionDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
     @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
-    private int cantLecturas;
+    private Integer cantLecturas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
     @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
-    private int alertasMedidas;
+    private Integer alertasMedidas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
     @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
-    private int alertasRojas;
+    private Integer alertasRojas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
     @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
-    private int sensoresDeshab;
+    private Integer sensoresDeshab;
 
-    public PlantaEdicionDTO(int cantLecturas, int alertasMedidas, int alertasRojas, int sensoresDeshab) {
+    public PlantaEdicionDTO(Integer cantLecturas, Integer alertasMedidas, Integer alertasRojas, Integer sensoresDeshab) {
         this.cantLecturas = cantLecturas;
         this.alertasMedidas = alertasMedidas;
         this.alertasRojas = alertasRojas;
         this.sensoresDeshab = sensoresDeshab;
     }
 
-    public int getCantLecturas() {
+    public Integer getCantLecturas() {
         return cantLecturas;
     }
 
-    public void setCantLecturas(int cantLecturas) {
+    public void setCantLecturas(Integer cantLecturas) {
         this.cantLecturas = cantLecturas;
     }
 
-    public int getAlertasMedidas() {
+    public Integer getAlertasMedidas() {
         return alertasMedidas;
     }
 
-    public void setAlertasMedidas(int alertasMedidas) {
+    public void setAlertasMedidas(Integer alertasMedidas) {
         this.alertasMedidas = alertasMedidas;
     }
 
-    public int getAlertasRojas() {
+    public Integer getAlertasRojas() {
         return alertasRojas;
     }
 
-    public void setAlertasRojas(int alertasRojas) {
+    public void setAlertasRojas(Integer alertasRojas) {
         this.alertasRojas = alertasRojas;
     }
 
-    public int getSensoresDeshab() {
+    public Integer getSensoresDeshab() {
         return sensoresDeshab;
     }
 
-    public void setSensoresDeshab(int sensoresDeshab) {
+    public void setSensoresDeshab(Integer sensoresDeshab) {
         this.sensoresDeshab = sensoresDeshab;
     }
+
     
     
 }
