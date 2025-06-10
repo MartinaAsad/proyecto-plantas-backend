@@ -10,6 +10,9 @@ import com.martina.plantas.exception.UsuarioErrorException;
 import com.martina.plantas.mapper.PlantasMapper;
 import com.martina.plantas.repository.PlantaRepository;
 import com.martina.plantas.repository.UsuarioRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,9 @@ public class PlantaServiceImpl implements PlantaService {
     
     private final PlantasMapper plantasMapper;
     
+    @Autowired
+    private EntityManager entityManager;
+            
     @Autowired
        public PlantaServiceImpl(PlantasMapper plantasMapper) {
         this.plantasMapper = plantasMapper;
@@ -87,6 +93,19 @@ public class PlantaServiceImpl implements PlantaService {
         plantaRepository.save(p);
         
         
+    }
+
+    @Override
+    public Integer obtenerCantSensores(Integer id) {
+        StoredProcedureQuery query=entityManager
+                .createStoredProcedureQuery("sumaSensoresUsuario")
+                .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
+         .registerStoredProcedureParameter("totalSensores", Integer.class, ParameterMode.OUT);
+   
+        query.setParameter("idUsuario",id);
+        query.execute();
+        
+        return (Integer) query.getOutputParameterValue("totalSensores");
     }
 
   

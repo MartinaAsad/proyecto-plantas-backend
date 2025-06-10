@@ -32,4 +32,5 @@ public class PlantaController {
         plantaServiceImpl.editarPlanta(p, id);
     }
     
+    
 }

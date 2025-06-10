@@ -12,8 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
@@ -24,8 +22,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "planta")
-@NamedQueries({
-    @NamedQuery(name = "Planta.findAll", query = "SELECT p FROM Planta p")})
 public class Planta implements Serializable {
 
     private static final long serialVersionUID = 1L;
