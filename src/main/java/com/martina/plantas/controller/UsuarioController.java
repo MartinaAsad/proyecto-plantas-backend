@@ -45,4 +45,9 @@ public class UsuarioController {
     Integer obtenerAlertasMedias (@PathVariable("id") Integer id){
         return plantaServiceImpl.obtenerAlertasMedias(id);
     }
+    
+    @GetMapping("/users/{id}/redAlerts/sum")
+    Integer obtenerAlertasRojas (@PathVariable("id") Integer id){
+        return plantaServiceImpl.obtenerAlertasRojas(id);
+    }
 }
