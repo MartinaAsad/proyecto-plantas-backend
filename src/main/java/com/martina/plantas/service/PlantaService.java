@@ -13,4 +13,5 @@ public interface PlantaService {
     void crearPlanta (PlantaDTO p);
     void editarPlanta (PlantaEdicionDTO planta, Integer plantaSeleccionada);
     Integer obtenerCantSensores (Integer id);
+    Integer obtenerAlertasMedias (Integer id);
 }

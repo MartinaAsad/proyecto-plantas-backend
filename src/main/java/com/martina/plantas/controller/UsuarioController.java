@@ -40,4 +40,9 @@ public class UsuarioController {
     Integer obtenerSumaSensores (@PathVariable("id") Integer id){
         return plantaServiceImpl.obtenerCantSensores(id);
     }
+    
+     @GetMapping("/users/{id}/mediumAlerts/sum")
+    Integer obtenerAlertasMedias (@PathVariable("id") Integer id){
+        return plantaServiceImpl.obtenerAlertasMedias(id);
+    }
 }
