@@ -16,19 +16,19 @@ public class PlantaEdicionDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
-    @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
+    @Max(value = 9999, message = "9999 es el valor maximo aceptado")
     private Integer cantLecturas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
-    @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
+    @Max(value = 99999, message = "9999 es el valor maximo aceptado")
     private Integer alertasMedidas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
-    @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
+    @Max(value = 9999, message = "9999 es el valor maximo aceptado")
     private Integer alertasRojas;
     
     @Min(value = 1, message = "1 es el valor minimo aceptado")
-    @Max(value = 99999999, message = "99999999 es el valor maximo aceptado")
+    @Max(value = 9999, message = "9999 es el valor maximo aceptado")
     private Integer sensoresDeshab;
 
     public PlantaEdicionDTO(Integer cantLecturas, Integer alertasMedidas, Integer alertasRojas, Integer sensoresDeshab) {
