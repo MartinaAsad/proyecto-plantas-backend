@@ -132,6 +132,18 @@ public class PlantaServiceImpl implements PlantaService {
         return (Integer) query.getOutputParameterValue("cantAlertasRojas");
     }
 
+    @Override
+    public Integer obtenerCantLecturas(Integer id) {
+        StoredProcedureQuery query=entityManager
+                .createStoredProcedureQuery("sumarCantLecturas")
+                .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
+         .registerStoredProcedureParameter("total", Integer.class, ParameterMode.OUT);
+   
+        query.setParameter("idUsuario",id);
+        query.execute();  
+        return (Integer) query.getOutputParameterValue("total");
+    }
+
   
     
     

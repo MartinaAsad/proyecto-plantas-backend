@@ -50,4 +50,9 @@ public class UsuarioController {
     Integer obtenerAlertasRojas (@PathVariable("id") Integer id){
         return plantaServiceImpl.obtenerAlertasRojas(id);
     }
+    
+     @GetMapping("/users/{id}/lectures/sum")
+    Integer obtenerLecturas (@PathVariable("id") Integer id){
+        return plantaServiceImpl.obtenerCantLecturas(id);
+    }
 }

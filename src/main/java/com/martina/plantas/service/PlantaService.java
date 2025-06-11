@@ -15,4 +15,5 @@ public interface PlantaService {
     Integer obtenerCantSensores (Integer id);
     Integer obtenerAlertasMedias (Integer id);
     Integer obtenerAlertasRojas (Integer id);
+    Integer obtenerCantLecturas (Integer id);
 }
