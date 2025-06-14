@@ -3,6 +3,7 @@ package com.martina.plantas.service;
 
 import com.martina.plantas.dto.request.PlantaDTO;
 import com.martina.plantas.dto.request.PlantaEdicionDTO;
+import com.martina.plantas.dto.response.PlantaResponse;
 import com.martina.plantas.entities.Planta;
 import com.martina.plantas.entities.Usuario;
 import com.martina.plantas.exception.PlantaExistingException;
@@ -14,6 +15,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.ParameterMode;
 import jakarta.persistence.StoredProcedureQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -142,6 +145,11 @@ public class PlantaServiceImpl implements PlantaService {
         query.setParameter("idUsuario",id);
         query.execute();  
         return (Integer) query.getOutputParameterValue("total");
+    }
+
+    @Override
+    public Page<PlantaResponse> getAll(Integer idUsuario,Pageable pageable) {
+        return plantaRepository.getAll(idUsuario,pageable);
     }
 
   

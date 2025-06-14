@@ -10,6 +10,7 @@ public class PruebaTechforbApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaTechforbApplication.class, args);
+                
 	}
 
 }
