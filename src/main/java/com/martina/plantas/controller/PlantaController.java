@@ -3,11 +3,11 @@ package com.martina.plantas.controller;
 
 import com.martina.plantas.dto.request.PlantaDTO;
 import com.martina.plantas.dto.request.PlantaEdicionDTO;
+import com.martina.plantas.dto.response.PaginacionResponse;
 import com.martina.plantas.dto.response.PlantaResponse;
 import com.martina.plantas.service.PlantaServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -37,7 +37,7 @@ public class PlantaController {
     }
     
     @GetMapping("/plants/{id}")
-    Page<PlantaResponse> obtenerPlantas(@PathVariable("id") Integer id, Pageable p){
+    PaginacionResponse<PlantaResponse> obtenerPlantas(@PathVariable("id") Integer id, Pageable p){
      return plantaServiceImpl.getAll(id, p);
     }
     

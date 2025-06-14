@@ -3,6 +3,7 @@ package com.martina.plantas.service;
 
 import com.martina.plantas.dto.request.PlantaDTO;
 import com.martina.plantas.dto.request.PlantaEdicionDTO;
+import com.martina.plantas.dto.response.PaginacionResponse;
 import com.martina.plantas.dto.response.PlantaResponse;
 import com.martina.plantas.entities.Planta;
 import com.martina.plantas.entities.Usuario;
@@ -148,8 +149,16 @@ public class PlantaServiceImpl implements PlantaService {
     }
 
     @Override
-    public Page<PlantaResponse> getAll(Integer idUsuario,Pageable pageable) {
-        return plantaRepository.getAll(idUsuario,pageable);
+    public PaginacionResponse<PlantaResponse> getAll(Integer idUsuario,Pageable pageable) {
+       Page<PlantaResponse> lista=plantaRepository.getAll(idUsuario,pageable);
+       return new PaginacionResponse<>(
+               lista.getContent(),
+               lista.getNumber(),
+               lista.getSize(),
+               lista.getTotalElements(),
+               lista.getTotalPages(),
+               lista.isLast()
+       );
     }
 
   
