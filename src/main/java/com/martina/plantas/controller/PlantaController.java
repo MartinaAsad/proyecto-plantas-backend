@@ -51,5 +51,10 @@ public class PlantaController {
      return plantaServiceImpl.obtenerAlertasMedias(id);
     }
     
+    @GetMapping("/plants/{id}/redAlerts")
+    Integer obtenerAlertasRojas(@PathVariable("id") Integer id){
+     return plantaServiceImpl.obtenerAlertasRojas(id);
+    }
+    
     
 }

@@ -31,4 +31,7 @@ public interface PlantaRepository extends JpaRepository<Planta, Integer>{
     @Query("SELECT alertasMedidas FROM Planta WHERE usuarioidUsuario= :usuarioidUsuario")
     Integer getAlertasMediasDeshabByUsuarioidUsuario(Usuario usuarioidUsuario);
     
+      @Query("SELECT alertasRojas FROM Planta WHERE usuarioidUsuario= :usuarioidUsuario")
+    Integer getAlertasRojasByUsuarioidUsuario(Usuario usuarioidUsuario);
+    
 }
