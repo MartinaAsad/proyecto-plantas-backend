@@ -1,6 +1,7 @@
 package com.martina.plantas.service;
 
 import com.martina.plantas.dto.request.UsuarioDTO;
+import com.martina.plantas.dto.response.InfoPersonalResponse;
 import com.martina.plantas.entities.Usuario;
 import com.martina.plantas.exception.UsuarioErrorException;
 import com.martina.plantas.mapper.UsuarioMapper;
@@ -59,5 +60,10 @@ public class UsuarioServiceImpl implements UsuarioService{
         }
         usuarioMapper.updateUsuarioFromDto(uDto, u);
          usuarioRepository.save(u);
+    }
+
+    @Override
+    public InfoPersonalResponse obtenerNombreApellido(Integer id) {
+        return usuarioRepository.obtenerInfoPersonal(id);
     }
 }

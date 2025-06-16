@@ -1,7 +1,9 @@
 package com.martina.plantas.repository;
+import com.martina.plantas.dto.response.InfoPersonalResponse;
 import com.martina.plantas.entities.Usuario;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -11,4 +13,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Integer>{
 	Optional<Usuario> findByMail(String mail);
         
         boolean existsByMail (String mail);
+        @Query("SELECT new com.martina.plantas.dto.response.InfoPersonalResponse (u.nombre, u.apellido)  FROM Usuario u " +
+"WHERE u.idUsuario= :idUsuario")
+    InfoPersonalResponse obtenerInfoPersonal(Integer idUsuario);
 }

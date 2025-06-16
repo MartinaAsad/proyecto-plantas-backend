@@ -2,6 +2,7 @@
 package com.martina.plantas.controller;
 
 import com.martina.plantas.dto.request.UsuarioDTO;
+import com.martina.plantas.dto.response.InfoPersonalResponse;
 import com.martina.plantas.service.PlantaServiceImpl;
 import com.martina.plantas.service.UsuarioServiceImpl;
 import jakarta.validation.Valid;
@@ -54,5 +55,10 @@ public class UsuarioController {
      @GetMapping("/users/{id}/lectures/sum")
     Integer obtenerLecturas (@PathVariable("id") Integer id){
         return plantaServiceImpl.obtenerSumaCantLecturas(id);
+    }
+    
+    @GetMapping("/users/{id}/personalInfo")
+    InfoPersonalResponse obtenerIndo(@PathVariable("id") Integer id){
+        return usuarioServiceImpl.obtenerNombreApellido(id);
     }
 }
