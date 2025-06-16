@@ -38,21 +38,21 @@ public class UsuarioController {
     
     @GetMapping("/users/{id}/sensors/sum")
     Integer obtenerSumaSensores (@PathVariable("id") Integer id){
-        return plantaServiceImpl.obtenerCantSensores(id);
+        return plantaServiceImpl.obtenerSumaSensores(id);
     }
     
      @GetMapping("/users/{id}/mediumAlerts/sum")
     Integer obtenerAlertasMedias (@PathVariable("id") Integer id){
-        return plantaServiceImpl.obtenerAlertasMedias(id);
+        return plantaServiceImpl.obtenerSumaAlertasMedias(id);
     }
     
     @GetMapping("/users/{id}/redAlerts/sum")
     Integer obtenerAlertasRojas (@PathVariable("id") Integer id){
-        return plantaServiceImpl.obtenerAlertasRojas(id);
+        return plantaServiceImpl.obtenerSumaAlertasRojas(id);
     }
     
      @GetMapping("/users/{id}/lectures/sum")
     Integer obtenerLecturas (@PathVariable("id") Integer id){
-        return plantaServiceImpl.obtenerCantLecturas(id);
+        return plantaServiceImpl.obtenerSumaCantLecturas(id);
     }
 }

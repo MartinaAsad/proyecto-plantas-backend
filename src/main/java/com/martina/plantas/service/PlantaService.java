@@ -15,9 +15,9 @@ public interface PlantaService {
     
     void crearPlanta (PlantaDTO p);
     void editarPlanta (PlantaEdicionDTO planta, Integer plantaSeleccionada);
-    Integer obtenerCantSensores (Integer id);
-    Integer obtenerAlertasMedias (Integer id);
-    Integer obtenerAlertasRojas (Integer id);
-    Integer obtenerCantLecturas (Integer id);
+    Integer obtenerSumaSensores (Integer id);
+    Integer obtenerSumaAlertasMedias (Integer id);
+    Integer obtenerSumaAlertasRojas (Integer id);
+    Integer obtenerSumaCantLecturas (Integer id);
     PaginacionResponse<PlantaResponse> getAll(Integer idUsuario,Pageable pageable);
 }

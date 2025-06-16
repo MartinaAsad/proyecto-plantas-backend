@@ -100,7 +100,7 @@ public class PlantaServiceImpl implements PlantaService {
     }
 
     @Override
-    public Integer obtenerCantSensores(Integer id) {
+    public Integer obtenerSumaSensores(Integer id) {
         StoredProcedureQuery query=entityManager
                 .createStoredProcedureQuery("sumaSensoresUsuario")
                 .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
@@ -113,7 +113,7 @@ public class PlantaServiceImpl implements PlantaService {
     }
 
     @Override
-    public Integer obtenerAlertasMedias(Integer id) {
+    public Integer obtenerSumaAlertasMedias(Integer id) {
          StoredProcedureQuery query=entityManager
                 .createStoredProcedureQuery("sumaAlertasMedias")
                 .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
@@ -125,7 +125,7 @@ public class PlantaServiceImpl implements PlantaService {
     }
 
     @Override
-    public Integer obtenerAlertasRojas(Integer id) {
+    public Integer obtenerSumaAlertasRojas(Integer id) {
          StoredProcedureQuery query=entityManager
                 .createStoredProcedureQuery("sumaAlertasRojas")
                 .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
@@ -137,7 +137,7 @@ public class PlantaServiceImpl implements PlantaService {
     }
 
     @Override
-    public Integer obtenerCantLecturas(Integer id) {
+    public Integer obtenerSumaCantLecturas(Integer id) {
         StoredProcedureQuery query=entityManager
                 .createStoredProcedureQuery("sumarCantLecturas")
                 .registerStoredProcedureParameter("idUsuario", Integer.class, ParameterMode.IN)
