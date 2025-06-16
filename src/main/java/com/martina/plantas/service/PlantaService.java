@@ -24,4 +24,5 @@ public interface PlantaService {
     Integer obtenerAlertasRojas (Integer id);
     Integer obtenerLecturas (Integer id);
     PaginacionResponse<PlantaResponse> getAll(Integer idUsuario,Pageable pageable);
+    void eliminarPlanta (Integer id);
 }

@@ -9,6 +9,7 @@ import com.martina.plantas.service.PlantaServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +56,17 @@ public class PlantaController {
     Integer obtenerAlertasRojas(@PathVariable("id") Integer id){
      return plantaServiceImpl.obtenerAlertasRojas(id);
     }
+    
+    @GetMapping("/plants/{id}/lectures")
+    Integer obtenerLecturas(@PathVariable("id") Integer id){
+     return plantaServiceImpl.obtenerLecturas(id);
+    }
+    
+    @DeleteMapping("/plants/{id}")
+    void borrarPlanta(@PathVariable("id") Integer id){
+      plantaServiceImpl.eliminarPlanta(id);
+    }
+    
     
     
 }
