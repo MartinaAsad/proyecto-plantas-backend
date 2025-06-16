@@ -169,7 +169,8 @@ public class PlantaServiceImpl implements PlantaService {
 
     @Override
     public Integer obtenerAlertasMedias(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Usuario u=usuarioRepository.findById(id).orElseThrow(()-> new UsuarioErrorException("No existe el usuario"));
+        return plantaRepository.getAlertasMediasDeshabByUsuarioidUsuario(u);
     }
 
     @Override

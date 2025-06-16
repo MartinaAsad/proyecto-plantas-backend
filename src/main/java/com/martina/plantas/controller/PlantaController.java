@@ -46,5 +46,10 @@ public class PlantaController {
      return plantaServiceImpl.obtenerSensores(id);
     }
     
+     @GetMapping("/plants/{id}/mediumAlerts")
+    Integer obtenerAlertasMedias(@PathVariable("id") Integer id){
+     return plantaServiceImpl.obtenerAlertasMedias(id);
+    }
+    
     
 }
