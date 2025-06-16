@@ -22,7 +22,7 @@ public class PlantaResponse {
      private byte[] imagen;
      private String nombrePlanta;
      private Integer cantLecturas;
-     private Integer alertasMedidas;
+     private Integer alertasRojas;
      private Integer sensoresDeshab;
      
      

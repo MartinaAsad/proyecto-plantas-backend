@@ -19,7 +19,7 @@ public interface PlantaRepository extends JpaRepository<Planta, Integer>{
     boolean existsPlantaByNombrePlantaAndUsuarioidUsuario(String nombrePlanta, Usuario usuarioidUsuario);
     
     @Query("SELECT new com.martina.plantas.dto.response.PlantaResponse (pa.nombrePais, pa.imagen, p.nombrePlanta, " +
-"p.cantLecturas, p.alertasMedidas, p.sensoresDeshab)  FROM Planta p " +
+"p.cantLecturas, p.alertasMedidas, p.alertasRojas)  FROM Planta p " +
 "INNER JOIN Paises pa ON " +
 "pa.id=p.pais.id " +
 "WHERE p.usuarioidUsuario.idUsuario= :idUsuario")
