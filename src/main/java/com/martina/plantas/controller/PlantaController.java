@@ -41,5 +41,10 @@ public class PlantaController {
      return plantaServiceImpl.getAll(id, p);
     }
     
+    @GetMapping("/plants/{id}/sensors")
+    Integer obtenerSensores(@PathVariable("id") Integer id){
+     return plantaServiceImpl.obtenerSensores(id);
+    }
+    
     
 }

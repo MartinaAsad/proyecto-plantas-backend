@@ -25,4 +25,7 @@ public interface PlantaRepository extends JpaRepository<Planta, Integer>{
 "WHERE p.usuarioidUsuario.idUsuario= :idUsuario")
     Page<PlantaResponse> getAll(Integer idUsuario, Pageable p);
     
+    @Query("SELECT sensoresDeshab FROM Planta WHERE usuarioidUsuario= :usuarioidUsuario")
+    Integer getSensoresDeshabByUsuarioidUsuario(Usuario usuarioidUsuario);
+    
 }

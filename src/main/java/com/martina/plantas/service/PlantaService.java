@@ -19,5 +19,9 @@ public interface PlantaService {
     Integer obtenerSumaAlertasMedias (Integer id);
     Integer obtenerSumaAlertasRojas (Integer id);
     Integer obtenerSumaCantLecturas (Integer id);
+     Integer obtenerSensores (Integer id);
+    Integer obtenerAlertasMedias (Integer id);
+    Integer obtenerAlertasRojas (Integer id);
+    Integer obtenerLecturas (Integer id);
     PaginacionResponse<PlantaResponse> getAll(Integer idUsuario,Pageable pageable);
 }
