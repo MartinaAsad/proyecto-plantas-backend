@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -34,13 +33,9 @@ public class Paises implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "nombreImagen")
-    private String nombreImagen;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
     @Column(name = "imagen")
-    private byte[] imagen;
+    private String imagen;
+    @Basic(optional = false)
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,13 +49,26 @@ public class Paises implements Serializable {
     public Paises() {
     }
 
-    public Paises(Integer id) {
+    public Paises(String nombrePais, String imagen, Integer id, Collection<Planta> plantaCollection) {
+        this.nombrePais = nombrePais;
+        this.imagen = imagen;
         this.id = id;
+        this.plantaCollection = plantaCollection;
     }
 
-    public Paises(Integer id, String nombreImagen, byte[] imagen) {
-        this.id = id;
-        this.nombreImagen = nombreImagen;
+    public String getNombrePais() {
+        return nombrePais;
+    }
+
+    public void setNombrePais(String nombrePais) {
+        this.nombrePais = nombrePais;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -72,7 +80,6 @@ public class Paises implements Serializable {
         this.id = id;
     }
 
-
     public Collection<Planta> getPlantaCollection() {
         return plantaCollection;
     }
@@ -80,54 +87,10 @@ public class Paises implements Serializable {
     public void setPlantaCollection(Collection<Planta> plantaCollection) {
         this.plantaCollection = plantaCollection;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Paises)) {
-            return false;
-        }
-        Paises other = (Paises) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.martina.plantas.entities.Paises[ id=" + id + " ]";
-    }
-
-    public String getNombrePais() {
-        return nombrePais;
-    }
-
-    public void setNombrePais(String nombrePais) {
-        this.nombrePais = nombrePais;
-    }
-
-    public String getNombreImagen() {
-        return nombreImagen;
-    }
-
-    public void setNombreImagen(String nombreImagen) {
-        this.nombreImagen = nombreImagen;
-    }
-
-    public byte[] getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
+    
     
 }
+    
+    
+    
+

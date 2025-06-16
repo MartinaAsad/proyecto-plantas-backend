@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class PlantaResponse {
      private String nombrePais;
-     private byte[] imagen;
+     private String imagen;
      private String nombrePlanta;
      private Integer cantLecturas;
      private Integer alertasRojas;
