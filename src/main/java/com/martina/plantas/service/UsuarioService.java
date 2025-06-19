@@ -10,7 +10,6 @@ import com.martina.plantas.dto.response.InfoPersonalResponse;
 
 public interface UsuarioService {
     
-    void crearUsuario(UsuarioDTO uDto);
     void actualizarUsuario(Integer id,UsuarioDTO uDto);
     InfoPersonalResponse obtenerNombreApellido(Integer id);
 }

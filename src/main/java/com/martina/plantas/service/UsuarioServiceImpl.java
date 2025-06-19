@@ -25,28 +25,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     public UsuarioServiceImpl(UsuarioMapper usuarioMapper){
         this.usuarioMapper=usuarioMapper;
     }
-
-    @Override
-    public void crearUsuario(UsuarioDTO uDto) {
-       Usuario u=usuarioMapper.aEntidad(uDto);
-       
-       if(!verificarNulos(uDto)){
-         if(usuarioRepository.findByMail(u.getMail()).isPresent()){
-           throw new UsuarioErrorException("El usuario a ingresar ya existe en el sistema");
-       }   
-       }
-       usuarioRepository.save(u);
-    }
-    
-    public boolean verificarNulos (UsuarioDTO dto){
-        boolean verificar=false;
-        if(dto.getNombre().isEmpty() || dto.getApellido().isEmpty() || dto.getClave().isEmpty() || dto.getMail().isEmpty()){
-            throw new UsuarioErrorException("Por favor, complete el campo vacio");
-        }else{
-            verificar=true;
-        }
-        return verificar;
-    }
     
     @Override
     public void actualizarUsuario(Integer id, UsuarioDTO uDto) {
