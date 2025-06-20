@@ -30,27 +30,24 @@ public class AuthServiceImpl implements AuthService{
     private final UsuarioMapper usuarioMapper;
 
     @Override
-    public void crearUsuario(UsuarioDTO uDto) {
-        Usuario u=usuarioMapper.aEntidad(uDto);
+    public void crearUsuario(UsuarioDTO uDto) { 
+        if (verificarNulos(uDto)){
+             throw new UsuarioErrorException("Por favor complete todos los campos");
+        }
+         if(usuarioRepository.findByMail(uDto.getMail()).isPresent()){
+           throw new UsuarioErrorException("El usuario a ingresar ya existe en el sistema");
+       }
+          Usuario u=usuarioMapper.aEntidad(uDto);
         u.setClave(passwordEncoder.encode(uDto.getClave()));
         u.setRol("comun");
-       if(!verificarNulos(uDto)){
-         if(usuarioRepository.findByMail(u.getMail()).isPresent()){
-           throw new UsuarioErrorException("El usuario a ingresar ya existe en el sistema");
-       }else{
-             System.out.println("No existe el mail "+uDto.getMail());
-         }   
+        usuarioRepository.save(u);
        }
-       usuarioRepository.save(u);
-    }
+
      public boolean verificarNulos (UsuarioDTO dto){
-        boolean verificar=false;
-        if(dto.getNombre().isEmpty() || dto.getApellido().isEmpty() || dto.getClave().isEmpty() || dto.getMail().isEmpty()){
-            throw new UsuarioErrorException("Por favor, complete el campo vacio");
-        }else{
-            verificar=true;
-        }
-        return verificar;
+       return dto.getNombre().isEmpty()
+        || dto.getApellido().isEmpty()
+        || dto.getClave().isEmpty()
+        || dto.getMail().isEmpty();
     }
 
     @Override
