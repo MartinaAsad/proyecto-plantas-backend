@@ -17,10 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Martina
- */@Service
+ @Service
  @AllArgsConstructor
 public class AuthServiceImpl implements AuthService{
 
@@ -36,10 +33,13 @@ public class AuthServiceImpl implements AuthService{
     public void crearUsuario(UsuarioDTO uDto) {
         Usuario u=usuarioMapper.aEntidad(uDto);
         u.setClave(passwordEncoder.encode(uDto.getClave()));
+        u.setRol("comun");
        if(!verificarNulos(uDto)){
          if(usuarioRepository.findByMail(u.getMail()).isPresent()){
            throw new UsuarioErrorException("El usuario a ingresar ya existe en el sistema");
-       }   
+       }else{
+             System.out.println("No existe el mail "+uDto.getMail());
+         }   
        }
        usuarioRepository.save(u);
     }
@@ -65,10 +65,10 @@ public class AuthServiceImpl implements AuthService{
             return new AuthDTO(token);
         } catch (BadCredentialsException | UsernameNotFoundException e) {
             System.out.println(e.getMessage());
-            throw new BadCredentialsException("Incorrect username or password");
+            throw new BadCredentialsException("Usuario o clave incorrectos");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            throw new Exception(e.getMessage());
+            throw new Exception("error desde aca"+e.getMessage());
         }
     }
     
