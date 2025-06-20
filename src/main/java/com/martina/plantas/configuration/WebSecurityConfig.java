@@ -2,11 +2,11 @@
 package com.martina.plantas.configuration;
 
 import com.martina.plantas.utils.JwtAuthenticationFilter;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -17,13 +17,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  *
  * @author Martina
  */
-@EnableWebSecurity
 @Configuration
-@AllArgsConstructor
-@EnableMethodSecurity
+@EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
       private final JwtAuthenticationFilter authenticationFilter;
-    private final AuthenticationProvider authenticationProvider;
+   
+      @Autowired
+      private final AuthenticationProvider authenticationProvider;
 
     /**
      * Configura el filtro de seguridad y la cadena de filtros de seguridad HTTP.
@@ -39,8 +40,7 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 // Autoriza las peticiones HTTP mediante el objeto authorizationManagerRequestMatcherRegistry
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                        .requestMatchers("/api/auth/**").permitAll()    // Permite el acceso a todas las URL que comiencen con '/api/auth/'
-                        .requestMatchers("/api/public/**").permitAll()  // Permite el acceso a todas las URL que comiencen con '/api/public/'
+                        .requestMatchers("/api/**").permitAll()    // Permite el acceso a todas las URL que comiencen con '/api/'
                         .anyRequest().authenticated()                     // Cualquier otra URL requiere autenticación
                 )
                 // Configura la gestión de sesiones como 'STATELESS' (sin estado)
